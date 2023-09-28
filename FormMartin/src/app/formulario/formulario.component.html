@@ -1,0 +1,70 @@
+<main>
+  <form (ngSubmit)="OnSubmit()" [formGroup]="userForm" class="form">
+    <span class="title">Register</span>
+
+    <!--------------------------------NAME-------------------------------------->
+
+    <label for="name" class="label">Name</label>
+    <input
+      formControlName="name"
+      type="text"
+      id="name"
+      name="name"
+      class="input"
+      [ngClass]="{ 'class-Error': nameInvalido }"
+    />
+    <span
+      class="errores"
+      *ngIf="nameUser.touched && nameUser.errors?.['required']"
+      >Por Favor introduzca un nombre</span
+    >
+    <span class="errores" *ngIf="nameUser.errors?.['minlength']">
+      Debe tener un minimo 10 caracteres
+    </span>
+
+    <br />
+    <!--------------------------------EMAIL-------------------------------------->
+
+    <label for="email" class="label">Email</label>
+    <input
+      formControlName="email"
+      type="text"
+      id="email"
+      name="email"
+      class="input"
+      [ngClass]="{ 'class-Error': emailInvalido }"
+    />
+
+    <span
+      class="errores"
+      *ngIf="emailUser.errors?.['required'] && emailUser.touched "
+      >Por Favor introduzca un email</span
+    >
+    <span class="errores" *ngIf="emailUser.errors?.['email']"
+      >Debe ser un email valido</span
+    >
+    <br />
+    <!--------------------------------PASSWORD-------------------------------------->
+
+    <label for="password" class="label">Password</label>
+    <input
+      formControlName="password"
+      type="password"
+      id="password"
+      name="password"
+      class="input"
+      [ngClass]="{ 'class-Error': passwordInvalida }"
+    />
+
+    <span
+      class="errores"
+      *ngIf="passwordUser.errors?.['required'] && passwordUser.touched"
+      >Por Favor escriba una contraseña</span
+    >
+    <span class="errores" *ngIf="passwordUser.errors?.['minlength']"
+      >Debe tener un minimo 10 caracteres</span
+    >
+    <br />
+    <button type="submit" class="submit">Register</button>
+  </form>
+</main>
